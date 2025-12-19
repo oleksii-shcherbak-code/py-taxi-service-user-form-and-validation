@@ -3,10 +3,12 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import RegexValidator
 
+from .models import Car
+
 LICENSE_REGEX = RegexValidator(
     regex=r"^[A-Z]{3}\d{5}$",
-    message="License number must "
-            "have 3 uppercase letters followed by 5 digits."
+    message="License number must have 3 uppercase letters "
+            "followed by 5 digits."
 )
 
 User = get_user_model()
@@ -44,5 +46,5 @@ class CarForm(forms.ModelForm):
     )
 
     class Meta:
-        model = get_user_model()
+        model = Car
         fields = "__all__"
